@@ -1,4 +1,5 @@
 provider "aws" {
+  # Región principal
   region = "eu-west-3"
 }
 

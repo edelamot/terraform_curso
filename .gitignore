@@ -5,3 +5,5 @@
 .terraform.*
 terraform.tfstate*
 terraform.tfvars
+usuario03_ssh
+usuario03_ssh*

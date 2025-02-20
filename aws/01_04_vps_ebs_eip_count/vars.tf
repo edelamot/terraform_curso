@@ -2,26 +2,26 @@ variable "ssh_key_path" {
   type = string
 }
 variable "project_name" {
-  type = string
-  default = "terraform"
+  type    = string
+  default = "terraform-usuario03"
 }
 variable "region_name" {
-  type = string
+  type    = string
   default = "eu-west-3"
 }
 variable "availability_zone" {
-  type = string
+  type    = string
   default = "eu-west-3a"
 }
-variable "vpc_id"{
+variable "vpc_id" {
   type = string
 }
 variable "instance_type" {
-  type = string
+  type    = string
   default = "t3.micro"
 }
 
 variable "count_value" {
-  type = number
+  type    = number
   default = 2
 }

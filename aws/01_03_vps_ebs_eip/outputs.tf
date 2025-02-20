@@ -2,6 +2,7 @@ output "instance_ip" {
   description = "The public IP for the instance: "
   value       = aws_instance.web.public_ip
 }
+
 output "eip_ip" {
   description = "The eip IP for ssh access: "
   value       = aws_eip.eip.public_ip

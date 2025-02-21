@@ -13,7 +13,7 @@ output "s3_bucket_domain_name" {
   description = "The domain name of the S3 bucket"
 }
 
-output "aws_dynamodb_table_id" {
-  value       = aws_dynamodb_table.terraform_locks.id
-  description = "The ID of the DynamoDB table"
+output "aws_dynamodb_table_name" {
+  value       = aws_dynamodb_table.terraform_locks.name
+  description = "The name of the DynamoDB table"
 }

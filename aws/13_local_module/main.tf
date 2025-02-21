@@ -3,6 +3,8 @@ provider "aws" {
   region = "eu-west-3"
 }
 
+
+# llamada al modulo
 module "mi_modulo" {
   source   = "./modules/mimodulo"
   entrada1 = "Hola"
@@ -11,6 +13,8 @@ module "mi_modulo" {
 
 }
 
+
+# outputs recogidos del modulo
 output "salida1" {
   value = module.mi_modulo.salida1
 }

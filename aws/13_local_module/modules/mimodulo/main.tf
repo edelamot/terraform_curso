@@ -1,3 +1,4 @@
+# variables de entrada del modulo
 variable "entrada1" {
 default = "valor1"
 }
@@ -10,6 +11,8 @@ variable "entrada3" {
 default = "valor3"
 }
 
+
+# outputs del modulo
 output "salida1" {
     value=var.entrada1
 }

@@ -40,10 +40,7 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   restrict_public_buckets = true
 }
 
-
-# Ya no es necesaria crear tabla dynamoDB para el bloqueo del .tfstate
-
-/*
+# Es muy recomendable crear una tabla dynamoDB para el bloqueo del .tfstate
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "${var.project_name}-${var.client_name}-up-and-running-locks"
   billing_mode = "PAY_PER_REQUEST"
@@ -54,4 +51,3 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
-*/

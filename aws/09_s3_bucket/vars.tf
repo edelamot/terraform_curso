@@ -20,5 +20,5 @@ variable "project_name" {
 
 variable "client_name" {
   type    = string
-  default = "Eduardo"
+  default = "eduardo"
 }

@@ -2,25 +2,6 @@ provider "aws" {
   region      = var.region
 }
 
-variable "region" {}
-
-variable "bucket_name" {
-  type = string
-  default = "My bucket"
-}
-variable "acl_value" {
-  type = string
-  default = "private"
-}
-
-variable "project_name" {
-  type = string
-  default = "terraform"
-}
-variable "client_name" {
-  type = string
-  default = "cdd"
-}
 resource "aws_s3_bucket" "b" {
   bucket = "${var.client_name}-${var.project_name}-backend-tfstate"
   /*
@@ -28,18 +9,12 @@ resource "aws_s3_bucket" "b" {
     prevent_destroy = true
   }
   */
-
   tags = {
-    Name        = "My bucket"
+    Name        = "My bucket usuario03"
     Environment = "Dev"
   }
 }
-/*
-resource "aws_s3_bucket_acl" "example" {
-  bucket = aws_s3_bucket.b.id
-  acl    = var.acl_value
-}
-*/
+
 resource "aws_s3_bucket_versioning" "versioning_example" {
   bucket = aws_s3_bucket.b.id
   versioning_configuration {
@@ -56,22 +31,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "default" {
     }
   }
 }
-/*
-resource "aws_kms_key" "mykey" {
-  description             = "This key is used to encrypt bucket objects"
-}
-
-resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  bucket = aws_s3_bucket.b.bucket
-
-  rule {
-    apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.mykey.arn
-      sse_algorithm     = "aws:kms"
-    }
-  }
-}
-*/
 
 resource "aws_s3_bucket_public_access_block" "public_access" {
   bucket                  = aws_s3_bucket.b.id
@@ -81,6 +40,10 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   restrict_public_buckets = true
 }
 
+
+# Ya no es necesaria crear tabla dynamoDB para el bloqueo del .tfstate
+
+/*
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "${var.project_name}-${var.client_name}-up-and-running-locks"
   billing_mode = "PAY_PER_REQUEST"
@@ -91,15 +54,4 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
-
-
-output "s3_bucket_arn" {
-  value       = aws_s3_bucket.b.arn
-  description = "The ARN of the S3 bucket"
-}
-
-output "dynamodb_table_name" {
-  value       = aws_dynamodb_table.terraform_locks.name
-  description = "The name of the DynamoDB table"
-}
-
+*/
